@@ -1,7 +1,7 @@
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 
 plugins {
-    kotlin("jvm") version "1.7.20"
+    kotlin("jvm") version "2.0.21"
     id("com.github.johnrengelman.shadow") version "7.1.2"
     id("org.jmailen.kotlinter") version "3.8.0"
 }
@@ -33,6 +33,10 @@ dependencies {
     compileOnly("tororo1066:base:$apiVersion")
     implementation("tororo1066:tororopluginapi:$apiVersion")
     compileOnly("com.mojang:brigadier:1.0.18")
+
+    implementation("io.modelcontextprotocol:kotlin-sdk:0.4.0") {
+        exclude(group = "org.jetbrains.kotlin")
+    }
 }
 
 tasks.withType<ShadowJar> {
